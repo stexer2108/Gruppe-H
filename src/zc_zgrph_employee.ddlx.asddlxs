@@ -1,0 +1,56 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeNamePlural: 'Employees',
+  title.value: 'Surename'
+}
+annotate view zc_zgrph_employee with
+{
+  @UI.facet:
+  [
+    { position: 10, targetQualifier: 'EmployeeDetails', label: 'Employee Details', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE },
+    { position: 30, targetElement: '_Vacent', label: 'VacationEntitlement', type: #LINEITEM_REFERENCE},
+    { position: 40, targetElement: '_Vacrequest', label: 'VacationRequest', type: #LINEITEM_REFERENCE}
+    
+    // behaivior definition: association extra noch in den header
+    //drei mal behaviour definitieren, im employee association und bei kinder association bei parent
+    // in service definition kinder mit expose
+  ]
+
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @UI.lineItem: [{ position: 10 }]
+  EmployeeId;
+  
+  @UI.fieldGroup: [{ position: 10, qualifier: 'EmployeeDetails' }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 20 }]
+  EmployeeNumber;
+  
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  Forename;
+  
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  Surename;
+  
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 50 }]
+  EntryDate;
+  
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  CreatedBy;
+  
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedAt;
+  
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  LastChangedBy;
+  
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedAt;
+
+}

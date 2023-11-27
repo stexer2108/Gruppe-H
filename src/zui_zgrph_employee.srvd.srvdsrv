@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition Mitarbeiter'
+define service zui_zgrph_employee {
+  expose zc_zgrph_employee   as Employee;
+  expose zc_zgrph_vacent     as Vacent;
+  expose zc_zgrph_vacrequest as Vacrequest;
+}

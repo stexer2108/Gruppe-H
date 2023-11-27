@@ -1,0 +1,5 @@
+CLASS zbp_zgrph_employee DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_zgrph_employee.
+ENDCLASS.
+
+CLASS zbp_zgrph_employee IMPLEMENTATION.
+ENDCLASS.

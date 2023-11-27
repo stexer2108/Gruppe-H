@@ -1,0 +1,75 @@
+managed implementation in class zbp_zgrph_employee unique;
+strict ( 2 );
+
+define behavior for zr_zgrph_employee //alias <alias_name>
+persistent table zgrph_employee
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Vacent { create; }
+  association _Vacrequest { create; }
+
+  field ( readonly, numbering : managed ) EmployeeId;
+
+  mapping for zgrph_employee corresponding
+    {
+      EmployeeNumber = employee_number;
+      Forename       = forename;
+      Surename       = surename;
+      EntryDate      = entry_date;
+      CreatedBy      = created_by;
+      CreatedAt      = created_at;
+      LastChangedBy  = last_changed_by;
+      LastChangedAt  = last_changed_at;
+    }
+}
+
+define behavior for zr_zgrph_vacent //alias <alias_name>
+persistent table zgrph_vacent
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  association _Employee;
+
+  field ( readonly, numbering : managed ) EntitlementId;
+  field ( readonly ) EmployeeId;
+
+  mapping for zgrph_vacent corresponding
+    {
+      EntitlementYear = entitlement_year;
+      Vacationdays    = vacationdays;
+    }
+}
+
+define behavior for zr_zgrph_vacrequest //alias <alias_name>
+persistent table zgrph_vacrequest
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  association _Employee;
+
+  field ( readonly, numbering : managed ) RequestId;
+  field ( readonly ) RequestApplicant;
+
+  mapping for zgrph_vacrequest corresponding
+    {
+      RequestApplicant = request_applicant;
+      RequestApprover  = request_approver;
+      StartDate        = start_date;
+      EndDate          = end_date;
+      RequestComment   = request_comment;
+      RequestStatus    = request_status;
+    }
+}

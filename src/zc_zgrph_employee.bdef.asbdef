@@ -1,0 +1,28 @@
+projection;
+strict ( 2 );
+
+define behavior for zc_zgrph_employee //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Vacent { create; }
+  use association _Vacrequest { create; }
+}
+
+define behavior for zc_zgrph_vacent //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Employee;
+}
+
+define behavior for zc_zgrph_vacrequest //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Employee;
+}
