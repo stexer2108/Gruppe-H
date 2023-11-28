@@ -10,6 +10,7 @@ define view entity zc_zgrph_vacrequest
       StartDate,
       EndDate,
       RequestComment,
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ZGRPH_StatusVH', element: 'RequestStatus' } }]
       RequestStatus,
       CreatedBy,
       CreatedAt,
