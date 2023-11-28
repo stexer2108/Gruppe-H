@@ -21,6 +21,7 @@ annotate view zc_zgrph_vacrequest with
     
     @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
     @UI.lineItem: [{ position: 10 }]
+    @UI.selectionField: [{ position: 10 }]
     RequestApplicant;
     
     @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
@@ -39,8 +40,9 @@ annotate view zc_zgrph_vacrequest with
     @UI.lineItem: [{ position: 50 }]
     RequestComment;
     
-    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 60 }]
+    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+    @UI.selectionField: [{ position: 20 }]
     RequestStatus;
     
     @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]

@@ -1,0 +1,9 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Wertehilfe Approver'
+define view entity zi_zgrph_ApplicantVH
+as select from zgrph_employee
+{
+    key employee_id as EmployeeId,
+    forename as Forename,
+    surename as Surename
+}

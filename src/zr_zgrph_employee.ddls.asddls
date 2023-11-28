@@ -4,9 +4,7 @@ define root view entity zr_zgrph_employee
   as select from zgrph_employee
   composition [0..*] of zr_zgrph_vacent       as _Vacent
   composition [0..*] of zr_zgrph_vacrequest   as _Vacrequest
-  association [1..1] to zi_zgrph_ApproverText as _ApproverText on $projection.EmployeeId = _ApproverText.EmployeeId
 {
-      @ObjectModel.text.element: ['ApproverName']
   key employee_id        as EmployeeId,
       employee_number    as EmployeeNumber,
       forename           as Forename,
@@ -18,8 +16,6 @@ define root view entity zr_zgrph_employee
       last_changed_at    as LastChangedAt,
 
       _Vacent,
-      _Vacrequest,
-
-      _ApproverText.Name as ApproverName
+      _Vacrequest
 
 }

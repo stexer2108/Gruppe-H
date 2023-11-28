@@ -6,7 +6,6 @@ define root view entity zc_zgrph_employee
   provider contract transactional_query
   as projection on zr_zgrph_employee
 {
-      @Consumption.valueHelpDefinition: [{ entity: { name: 'zi_zgrph_ApproverVH', element: 'EmployeeId'} }]
   key EmployeeId,
       EmployeeNumber,
       @Search.defaultSearchElement: true
@@ -20,8 +19,6 @@ define root view entity zc_zgrph_employee
       CreatedAt,
       LastChangedBy,
       LastChangedAt,
-
-      ApproverName,
 
       /* Associations */
       _Vacent     : redirected to composition child zc_zgrph_vacent,
