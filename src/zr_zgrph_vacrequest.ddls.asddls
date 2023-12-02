@@ -17,9 +17,13 @@ define view entity zr_zgrph_vacrequest
       zgrph_vacrequest.end_date          as EndDate,
       zgrph_vacrequest.request_comment   as RequestComment,
       zgrph_vacrequest.request_status    as RequestStatus,
+      @Semantics.user.createdBy: true
       zgrph_vacrequest.created_by        as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
       zgrph_vacrequest.created_at        as CreatedAt,
+      @Semantics.user.lastChangedBy: true
       zgrph_vacrequest.last_changed_by   as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
       zgrph_vacrequest.last_changed_at   as LastChangedAt,
 
       _Employee,

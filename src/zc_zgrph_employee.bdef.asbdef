@@ -1,5 +1,6 @@
 projection;
 strict ( 2 );
+use draft;
 
 define behavior for zc_zgrph_employee //alias <alias_name>
 {
@@ -7,8 +8,14 @@ define behavior for zc_zgrph_employee //alias <alias_name>
   use update;
   use delete;
 
-  use association _Vacent { create; }
-  use association _Vacrequest { create; }
+  use association _Vacent { create; with draft;}
+  use association _Vacrequest { create; with draft; }
+
+  use action Activate;
+  use action Edit;
+  use action Discard;
+  use action Prepare;
+  use action Resume;
 }
 
 define behavior for zc_zgrph_vacent //alias <alias_name>
@@ -16,7 +23,7 @@ define behavior for zc_zgrph_vacent //alias <alias_name>
   use update;
   use delete;
 
-  use association _Employee;
+  use association _Employee { with draft; }
 }
 
 define behavior for zc_zgrph_vacrequest //alias <alias_name>
@@ -24,5 +31,5 @@ define behavior for zc_zgrph_vacrequest //alias <alias_name>
   use update;
   use delete;
 
-  use association _Employee;
+  use association _Employee { with draft; }
 }

@@ -4,9 +4,9 @@
   <asx:values>
    <SRVB>
     <METADATA>
-     <NAME>ZUI_ZGRPH_EMPLOYEE</NAME>
+     <NAME>ZUI_ZGRPH_EMPLOYEE_V4</NAME>
      <TYPE>SRVB/SVB</TYPE>
-     <DESCRIPTION>Servie Binding Mitarbeiter</DESCRIPTION>
+     <DESCRIPTION>Service Binding V4</DESCRIPTION>
      <LANGUAGE>EN</LANGUAGE>
      <LINKS>
       <item>
@@ -15,7 +15,7 @@
        <TITLE>Historic versions</TITLE>
       </item>
       <item>
-       <HREF>/sap/bc/adt/businessservices/odatav4/ZUI_ZGRPH_EMPLOYEE</HREF>
+       <HREF>/sap/bc/adt/businessservices/odatav4/ZUI_ZGRPH_EMPLOYEE_V4</HREF>
        <REL>http://www.sap.com/categories/odatav4</REL>
        <TYPE>application/vnd.sap.adt.businessservices.odatav4.v1+xml</TYPE>
        <TITLE>ODATAV4</TITLE>
@@ -44,7 +44,7 @@
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
-      <NAME>ZUI_ZGRPH_EMPLOYEE</NAME>
+      <NAME>ZUI_ZGRPH_EMPLOYEE_V4</NAME>
      </BIND_TYPE_IMPL>
      <BIND_TYPE>ODATA</BIND_TYPE>
      <BIND_TYPE_VERSION>V4</BIND_TYPE_VERSION>
