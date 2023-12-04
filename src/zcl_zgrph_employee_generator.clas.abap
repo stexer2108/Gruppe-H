@@ -28,6 +28,11 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     DELETE FROM zgrph_vacent.
     DELETE FROM zgrph_vacrequest.
 
+    " Draft Einträge löschen
+    DELETE FROM zgrph_employee_d.
+    DELETE FROM zgrph_vacent_d.
+    DELETE FROM zgrph_vacreq_d.
+
 
     " Mitarbeiter erstellen
     Hans_UUID = cl_system_uuid=>create_uuid_x16_static( ).

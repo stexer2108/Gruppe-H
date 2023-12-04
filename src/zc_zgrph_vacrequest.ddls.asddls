@@ -8,7 +8,7 @@ define view entity zc_zgrph_vacrequest
   key RequestId,
       @Consumption.valueHelpDefinition: [{ entity: { name: 'zi_zgrph_ApplicantVH', element: 'RequestApplicant'} }]
       RequestApplicant,
-      @Consumption.valueHelpDefinition: [{ entity: { name: 'zi_zgrph_ApproverVH', element: 'RequestApprover'} }]
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'zi_zgrph_ApproverVH', element: 'EmployeeId'} }]
       RequestApprover,
       StartDate,
       EndDate,
@@ -25,6 +25,7 @@ define view entity zc_zgrph_vacrequest
 
       /* Associations */
       _Employee : redirected to parent zc_zgrph_employee,
+      _Approver : redirected to zc_zgrph_employee,
 
       ApproverName,
       ApplicantName,

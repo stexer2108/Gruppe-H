@@ -11,6 +11,8 @@ define behavior for zc_zgrph_employee //alias <alias_name>
   use association _Vacent { create; with draft;}
   use association _Vacrequest { create; with draft; }
 
+  use action showTestMessage;
+
   use action Activate;
   use action Edit;
   use action Discard;
@@ -32,4 +34,5 @@ define behavior for zc_zgrph_vacrequest //alias <alias_name>
   use delete;
 
   use association _Employee { with draft; }
+  use association _Approver { with draft; }
 }

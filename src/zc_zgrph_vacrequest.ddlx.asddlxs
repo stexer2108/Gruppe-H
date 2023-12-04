@@ -16,9 +16,6 @@ annotate view zc_zgrph_vacrequest with
     @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
     RequestId;
     
-    @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
-    _Employee;
-    
     @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
     @UI.lineItem: [{ position: 10 }]
     @UI.selectionField: [{ position: 10 }]

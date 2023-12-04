@@ -14,6 +14,7 @@ define root view entity zc_zgrph_employee
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.7
       Surename,
+      AvailableDays,
       EntryDate,
       CreatedBy,
       CreatedAt,

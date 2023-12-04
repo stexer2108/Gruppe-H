@@ -8,23 +8,23 @@ CLASS zcm_zgrph_employee DEFINITION PUBLIC
     INTERFACES if_t100_dyn_msg .
 
     CONSTANTS:
-      BEGIN OF request_cancelled_successfully,
+      BEGIN OF test_message,
         msgid TYPE symsgid VALUE 'Z_ZGRPH_EMPLOYEE',
         msgno TYPE symsgno VALUE '001',
-        attr1 TYPE scx_attrname VALUE 'REQUEST_COMMENT',
+        attr1 TYPE scx_attrname VALUE 'SURENAME',
         attr2 TYPE scx_attrname VALUE '',
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
-      END OF request_cancelled_successfully .
+      END OF test_message .
 
-    DATA request_comment TYPE zgrph_comment.
+    DATA surename TYPE zgrph_employeesurname.
 
     METHODS constructor
       IMPORTING
         severity  TYPE if_abap_behv_message=>t_severity
         !textid   LIKE if_t100_message=>t100key OPTIONAL
         !previous LIKE previous OPTIONAL
-        request_comment TYPE zgrph_comment OPTIONAL .
+        surename  TYPE zgrph_employeesurname OPTIONAL .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -43,7 +43,7 @@ CLASS zcm_zgrph_employee IMPLEMENTATION.
     ENDIF.
 
     if_abap_behv_message~m_severity = severity.
-    me->request_comment = request_comment.
+    me->surename = surename.
 
   ENDMETHOD.
 ENDCLASS.

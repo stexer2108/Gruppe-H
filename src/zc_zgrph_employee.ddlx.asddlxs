@@ -17,10 +17,11 @@ annotate view zc_zgrph_employee with
     //drei mal behaviour definitieren, im employee association und bei kinder association bei parent
     // in service definition kinder mit expose
   ]
-
+  
+  @UI.lineItem: [{ position: 05, dataAction: 'ShowTestMessage', label: 'Show Test Message', type: #FOR_ACTION }]
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
-  @UI.lineItem: [{ position: 10 }]
+  // @UI.lineItem: [{ position: 10 }]
   EmployeeId;
   
   @UI.fieldGroup: [{ position: 10, qualifier: 'EmployeeDetails' }]
@@ -35,6 +36,10 @@ annotate view zc_zgrph_employee with
   @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
   @UI.lineItem: [{ position: 40 }]
   Surename;
+  
+  @UI.fieldGroup: [{ position: 35, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 45 }]
+  AvailableDays;
   
   @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
   @UI.selectionField: [{ position: 20 }]
