@@ -17,7 +17,7 @@ authorization master ( instance )
   association _Vacent { create; with draft; }
   association _Vacrequest { create; with draft; }
 
-  static action showTestMessage;
+//  determination detemineAvailableDays on modify { create; }
 
   draft action Activate optimized;
   draft action Discard;
@@ -75,6 +75,9 @@ authorization dependent by _Employee
 
   association _Employee { with draft; }
   association _Approver { with draft; }
+
+  validation validatedates on save { create; }
+  validation validateapprover on save { create; }
 
   field ( readonly, numbering : managed ) RequestId;
   field ( readonly ) RequestApplicant, RequestStatus, RequestComment /*errechneteTage*/;

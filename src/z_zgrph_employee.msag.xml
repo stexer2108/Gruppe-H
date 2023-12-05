@@ -12,7 +12,49 @@
      <SPRSL>E</SPRSL>
      <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>This is a Test Message from &amp;1</TEXT>
+     <TEXT>The Vacation Request &amp;1 was applied successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>The Vacation Request &amp;1 was approved successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>The Vacation Request &amp;1 was rejected</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>The Vacation Request &amp;1 was cancelled successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>This Approver has to exsist!</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>End Date has to be after the Start Date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>The Date is in the Past</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_ZGRPH_EMPLOYEE</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Available Days are not enought</TEXT>
     </T100>
    </T100>
   </asx:values>

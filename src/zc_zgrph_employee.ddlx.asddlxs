@@ -18,7 +18,7 @@ annotate view zc_zgrph_employee with
     // in service definition kinder mit expose
   ]
   
-  @UI.lineItem: [{ position: 05, dataAction: 'ShowTestMessage', label: 'Show Test Message', type: #FOR_ACTION }]
+  // @UI.lineItem: [{ position: 05, dataAction: 'ShowTestMessage', label: 'Show Test Message', type: #FOR_ACTION }]
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   // @UI.lineItem: [{ position: 10 }]
