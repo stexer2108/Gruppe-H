@@ -1,11 +1,11 @@
 @Metadata.layer: #CUSTOMER
 @UI.headerInfo:
-{
-  typeName: 'VacationRequest',
-  typeNamePlural: 'VacationRequests',
-  title.value: 'RequestId'
-}
-annotate view zc_zgrph_vacrequest with 
+{ 
+    typeNamePlural: 'Vacation Requests',
+    title.value: 'ApplicantName'
+    }
+
+annotate view zc_zgrph_vacrequest_approver with 
 {
     @UI.facet:
     [
@@ -19,11 +19,11 @@ annotate view zc_zgrph_vacrequest with
     @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
     @UI.lineItem: [{ position: 10 }]
     @UI.selectionField: [{ position: 10 }]
-    RequestApplicant;   
+    ApplicantName;   
     
     @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
     @UI.lineItem: [{ position: 20 }]
-    RequestApprover;
+    ApproverName;
     
     @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
     @UI.lineItem: [{ position: 30 }]
@@ -37,8 +37,8 @@ annotate view zc_zgrph_vacrequest with
     @UI.lineItem: [{ position: 50 }]
     RequestComment;
     
-    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
-    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+//    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+//    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
     @UI.selectionField: [{ position: 20 }]
     RequestStatus;
     
@@ -54,4 +54,16 @@ annotate view zc_zgrph_vacrequest with
     @UI.fieldGroup: [{ position: 60, qualifier: 'AdminData' }]
     LastChangedAt;
     
+    @UI.hidden: true
+    RequestApprover;
+    
+    @UI.hidden: true
+    RequestApplicant;
+    
+    /* Associations */
+    @UI.hidden: true
+    _Approver;
+    
+    @UI.hidden: true
+    _Employee;
 }

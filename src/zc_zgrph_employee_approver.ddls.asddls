@@ -2,7 +2,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @Search.searchable: true
 @Metadata.allowExtensions: true
-define root view entity zc_zgrph_employee
+define root view entity zc_zgrph_employee_approver
   provider contract transactional_query
   as projection on zr_zgrph_employee
 {
@@ -22,15 +22,6 @@ define root view entity zc_zgrph_employee
       LastChangedAt,
 
       /* Associations */
-      _Vacent     : redirected to composition child zc_zgrph_vacent,
-      _Vacrequest : redirected to composition child zc_zgrph_vacrequest,
-      
-      AvailableVacationDays,
-      ConsumedVacationDays,
-      PlannedVacationDays,
-      
-      AvailableDaysCriticality,
-      ConsumedDaysCriticality,
-      PlannedDaysCriticality
+      _Vacrequest : redirected to composition child zc_zgrph_vacrequest_approver
 
 }

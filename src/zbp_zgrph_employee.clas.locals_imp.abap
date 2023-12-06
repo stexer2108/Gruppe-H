@@ -64,7 +64,6 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
          RESULT DATA(employees).
 
     LOOP AT employees INTO DATA(employee).
-
       SELECT SINGLE FROM zgrph_employee FIELDS @abap_true
             WHERE employee_id = @employee-RequestApprover INTO @DATA(exists).
 
@@ -84,14 +83,9 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
          RESULT DATA(requests).
 
     LOOP AT requests REFERENCE INTO DATA(request).
-
       IF request->EndDate < request->StartDate.
         message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>endDate_after_startDate
                                           severity = if_abap_behv_message=>severity-error ).
-
-*        APPEND VALUE #( %tky = request->%tky
-*                        %msg = message ) TO reported-request.
-*        APPEND VALUE #( %tky = request-%tky ) TO failed-request.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.

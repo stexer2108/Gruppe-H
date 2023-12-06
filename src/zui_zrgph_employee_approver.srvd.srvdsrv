@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition App 2'
+define service Zui_zrgph_employee_approver {
+  expose zc_zgrph_employee_approver   as EmployeeApprover;
+  expose zc_zgrph_vacrequest_approver as VacrequestApprover;
+}

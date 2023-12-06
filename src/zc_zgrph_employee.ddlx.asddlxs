@@ -37,14 +37,40 @@ annotate view zc_zgrph_employee with
   @UI.lineItem: [{ position: 40 }]
   Surename;
   
-  @UI.fieldGroup: [{ position: 35, qualifier: 'EmployeeDetails' }]
-  @UI.lineItem: [{ position: 45 }]
+  @UI.hidden: true
   AvailableDays;
   
   @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
   @UI.selectionField: [{ position: 20 }]
   @UI.lineItem: [{ position: 50 }]
   EntryDate;
+  
+  @UI.fieldGroup: [{ position: 50, qualifier: 'EmployeeDetails' }]
+  @EndUserText: { label: 'Availabe Vacation Days', quickInfo: 'Availabe Vacaton Days' }
+  @UI.lineItem: [{ position: 60, criticality: 'AvailableDaysCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Availabe Vacation Days', title: 'Availabe Vacation Days', targetValueElement: 'AvailableVacationDays', criticality: 'AvailableVacationDays' }
+  AvailableVacationDays;
+  
+  @UI.fieldGroup: [{ position: 60, qualifier: 'EmployeeDetails' }]
+  @EndUserText: { label: 'Consumed Vacation Days', quickInfo: 'Consumed Vacaton Days' }
+  @UI.lineItem: [{ position: 70, criticality: 'ConsumedDaysCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Consumed Vacation Days', title: 'Consumed Vacation Days', targetValueElement: 'ConsumedVacationDays', criticality: 'ConsumedVacationDays' }
+  ConsumedVacationDays;
+  
+  @UI.fieldGroup: [{ position: 70, qualifier: 'EmployeeDetails' }]
+  @EndUserText: { label: 'Planned Vacation Days', quickInfo: 'Planned Vacaton Days' }
+  @UI.lineItem: [{ position: 80, criticality: 'PlannedDaysCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Planned Vacation Days', title: 'Planned Vacation Days', targetValueElement: 'PlannedVacationDays', criticality: 'PlannedVacationDays' }
+  PlannedVacationDays;
+  
+  @UI.hidden: true
+  AvailableDaysCriticality;
+  
+  @UI.hidden: true
+  ConsumedDaysCriticality;
+  
+  @UI.hidden: true
+  PlannedDaysCriticality;
   
   @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
   CreatedBy;

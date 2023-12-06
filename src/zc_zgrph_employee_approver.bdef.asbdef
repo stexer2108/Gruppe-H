@@ -1,0 +1,31 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for zc_zgrph_employee_approver //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Activate;
+  use action Discard;
+  use action Edit;
+  use action Prepare;
+  use action Resume;
+
+
+
+  use association _Vacrequest { create; with draft; }
+}
+
+define behavior for zc_zgrph_vacrequest_approver //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Employee { with draft; }
+  use association _Approver { with draft; }
+
+  field ( readonly ) ApplicantName, ApproverName;
+}
