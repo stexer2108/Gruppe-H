@@ -6,6 +6,7 @@ define view entity zr_zgrph_vacrequest
   association        to zr_zgrph_employee        as _Approver      on $projection.RequestApprover = _Approver.EmployeeId
   association [1..1] to zi_zgrph_ApproverText    as _ApproverText  on $projection.RequestApprover = _ApproverText.EmployeeId
   association [1..1] to zi_zgrph_ApplicantText   as _ApplicantText on $projection.RequestApplicant = _ApplicantText.EmployeeId
+  association [1..1] to zi_zgrph_StatusVH        as _StatusText    on $projection.RequestStatus = _StatusText.ValueLow
 {
   key zgrph_vacrequest.request_id        as RequestId,
       @EndUserText: { label: 'RequestApplicant', quickInfo: 'Request Applicant' }
@@ -17,6 +18,7 @@ define view entity zr_zgrph_vacrequest
       zgrph_vacrequest.start_date        as StartDate,
       zgrph_vacrequest.end_date          as EndDate,
       zgrph_vacrequest.request_comment   as RequestComment,
+      @ObjectModel.text.element: [ 'StatusName' ]
       zgrph_vacrequest.request_status    as RequestStatus,
       zgrph_vacrequest.created_by        as CreatedBy,
       zgrph_vacrequest.created_at        as CreatedAt,
@@ -27,6 +29,7 @@ define view entity zr_zgrph_vacrequest
       _Approver,
       _ApproverText.Name                 as ApproverName,
       _ApplicantText.Name                as ApplicantName,
+      _StatusText.StatusName,
 
 
       case request_status when 'G' then 3

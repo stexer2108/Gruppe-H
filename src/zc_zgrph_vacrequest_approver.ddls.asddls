@@ -15,7 +15,7 @@ define view entity zc_zgrph_vacrequest_approver
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.7
       RequestComment,
-      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ZGRPH_StatusVH', element: 'RequestStatus' } }]
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'zi_zgrph_StatusVH', element: 'RequestStatus' } }]
       RequestStatus,
       CreatedBy,
       CreatedAt,

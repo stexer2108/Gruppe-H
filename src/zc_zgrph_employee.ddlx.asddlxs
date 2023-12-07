@@ -13,9 +13,6 @@ annotate view zc_zgrph_employee with
     { position: 30, targetElement: '_Vacent', label: 'VacationEntitlement', type: #LINEITEM_REFERENCE},
     { position: 40, targetElement: '_Vacrequest', label: 'VacationRequest', type: #LINEITEM_REFERENCE}
     
-    // behaivior definition: association extra noch in den header
-    //drei mal behaviour definitieren, im employee association und bei kinder association bei parent
-    // in service definition kinder mit expose
   ]
   
   // @UI.lineItem: [{ position: 05, dataAction: 'ShowTestMessage', label: 'Show Test Message', type: #FOR_ACTION }]
