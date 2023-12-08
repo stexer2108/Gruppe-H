@@ -9,6 +9,8 @@ CLASS lhc_zr_zgrph_employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS validateapprover FOR VALIDATE ON SAVE
       IMPORTING keys FOR zr_zgrph_vacrequest~ValidateApprover.
+    METHODS get_instance_authorizations_1 FOR INSTANCE AUTHORIZATION
+      IMPORTING keys REQUEST requested_authorizations FOR zr_zgrph_vacrequest RESULT result.
 
 *    METHODS detemineavailabledays FOR DETERMINE ON MODIFY
 *      IMPORTING keys FOR zr_zgrph_employee~detemineavailabledays.
@@ -86,8 +88,15 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
       IF request->EndDate < request->StartDate.
         message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>endDate_after_startDate
                                           severity = if_abap_behv_message=>severity-error ).
+        APPEND VALUE #( %tky = request->%tky
+                        %msg = message ) TO reported-zr_zgrph_vacrequest.
+        APPEND VALUE #( %tky = request->%tky ) TO failed-zr_zgrph_vacrequest.
       ENDIF.
     ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD get_instance_authorizations_1.
   ENDMETHOD.
 
 ENDCLASS.

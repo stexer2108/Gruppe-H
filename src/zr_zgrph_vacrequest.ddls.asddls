@@ -20,6 +20,7 @@ define view entity zr_zgrph_vacrequest
       zgrph_vacrequest.request_comment   as RequestComment,
       @ObjectModel.text.element: [ 'StatusName' ]
       zgrph_vacrequest.request_status    as RequestStatus,
+      zgrph_vacrequest.vacation_days     as VacationDays,
       zgrph_vacrequest.created_by        as CreatedBy,
       zgrph_vacrequest.created_at        as CreatedAt,
       zgrph_vacrequest.last_changed_by   as LastChangedBy,

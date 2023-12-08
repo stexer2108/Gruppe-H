@@ -17,6 +17,7 @@ define view entity zc_zgrph_vacrequest
       RequestComment,
       @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ZGRPH_StatusVH', element: 'RequestStatus' } }]
       RequestStatus,
+      VacationDays,
       CreatedBy,
       CreatedAt,
       LastChangedBy,

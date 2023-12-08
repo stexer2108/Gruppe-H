@@ -17,7 +17,7 @@ authorization master ( instance )
   association _Vacent { create; with draft; }
   association _Vacrequest { create; with draft; }
 
-//  determination detemineAvailableDays on modify { create; }
+  //  determination detemineAvailableDays on modify { create; }
 
   draft action Activate optimized;
   draft action Discard;
@@ -76,8 +76,11 @@ authorization dependent by _Employee
   association _Employee { with draft; }
   association _Approver { with draft; }
 
-  validation validatedates on save { create; }
-  validation validateapprover on save { create; }
+  determine action DatesValidation { validation ValidateDates; }
+  determine action ApproverValidation { validation ValidateApprover; }
+
+  validation ValidateDates on save { create; }
+  validation ValidateApprover on save { create; }
 
   field ( readonly, numbering : managed ) RequestId;
   field ( readonly ) RequestApplicant, RequestStatus, RequestComment /*errechneteTage*/;

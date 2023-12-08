@@ -6,11 +6,10 @@ define root view entity zi_zgrph_available_days
   association [1..1] to zi_zgrph_planned_days  as _PlannedDays  on $projection.EmployeeId = _PlannedDays.RequestApplicant
 
 {
-  key zgrph_vacent.employee_id                       as EmployeeId,
+  key zgrph_vacent.employee_id                          as EmployeeId,
 
-  key sum(vacationdays) - coalesce(_ConsumedDays.ConsumedVacationDays, 0)
-     - coalesce(_PlannedDays.PlannedVacationDays, 0) as AvailableDays
-
+      sum(vacationdays) - coalesce(_ConsumedDays.ConsumedVacationDays, 0)
+        - coalesce(_PlannedDays.PlannedVacationDays, 0) as AvailableDays
 }
 group by
   zgrph_vacent.employee_id,

@@ -8,7 +8,7 @@ define view entity zi_zgrph_consumed_days
 }
 
 where
-      request_status = 'A'
+      request_status = 'G'
   and end_date       < $session.user_date
 group by
   request_applicant;

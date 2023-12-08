@@ -42,6 +42,10 @@ annotate view zc_zgrph_vacrequest_approver with
     @UI.selectionField: [{ position: 20 }]
     RequestStatus;
     
+    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
+    @UI.lineItem: [{ position: 60 }]
+    VacationDays;
+    
     @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
     CreatedBy;
     
