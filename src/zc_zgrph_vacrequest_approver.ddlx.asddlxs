@@ -1,73 +1,80 @@
 @Metadata.layer: #CUSTOMER
 @UI.headerInfo:
-{ 
+{
     typeNamePlural: 'Vacation Requests',
     title.value: 'ApplicantName'
     }
 
-annotate view zc_zgrph_vacrequest_approver with 
+annotate view zc_zgrph_vacrequest_approver with
 {
-    @UI.facet:
-    [
-      { position: 10, targetQualifier: 'RequestDetails', label: 'Entitlement Details', type: #FIELDGROUP_REFERENCE },
-      { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
-    ]
-    
-    @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
-    RequestId;
-    
-    @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 10 }]
-    @UI.selectionField: [{ position: 10 }]
-    ApplicantName;   
-    
-    @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 20 }]
-    ApproverName;
-    
-    @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 30 }]
-    StartDate;
-    
-    @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 40 }]
-    EndDate;
-    
-    @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 50 }]
-    RequestComment;
-    
-//    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
-//    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
-    @UI.selectionField: [{ position: 20 }]
-    RequestStatus;
-    
-    @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
-    @UI.lineItem: [{ position: 60 }]
-    VacationDays;
-    
-    @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
-    CreatedBy;
-    
-    @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
-    CreatedAt;
-    
-    @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
-    LastChangedBy;
-    
-    @UI.fieldGroup: [{ position: 60, qualifier: 'AdminData' }]
-    LastChangedAt;
-    
-    @UI.hidden: true
-    RequestApprover;
-    
-    @UI.hidden: true
-    RequestApplicant;
-    
-    /* Associations */
-    @UI.hidden: true
-    _Approver;
-    
-    @UI.hidden: true
-    _Employee;
+  @UI.facet:
+  [
+    { position: 10, targetQualifier: 'RequestDetails', label: 'Entitlement Details', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+  ]
+
+  /* Actions */
+  @UI.lineItem:
+  [
+  { position: 10, dataAction: 'ApproveRequest', label: 'Approve Request', type: #FOR_ACTION }
+//  { position: 20, dataAction: 'CancelTravel', label: 'Cancel Travel', type: #FOR_ACTION }
+  ]
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  RequestId;
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  ApplicantName;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 20 }]
+  ApproverName;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  StartDate;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  EndDate;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 50 }]
+  RequestComment;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 60 }]
+  @UI.selectionField: [{ position: 20 }]
+  RequestStatus;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 60 }]
+  VacationDays;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'AdminData' }]
+  LastChangedAt;
+
+  @UI.hidden: true
+  RequestApprover;
+
+  @UI.hidden: true
+  RequestApplicant;
+
+  /* Associations */
+  @UI.hidden: true
+  _Approver;
+
+  @UI.hidden: true
+  _Employee;
 }

@@ -76,6 +76,8 @@ authorization dependent by _Employee
   association _Employee { with draft; }
   association _Approver { with draft; }
 
+  action ApproveRequest result [1] $self;
+
   determine action DatesValidation { validation ValidateDates; }
   determine action ApproverValidation { validation ValidateApprover; }
 

@@ -9,8 +9,12 @@ CLASS lhc_zr_zgrph_employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS validateapprover FOR VALIDATE ON SAVE
       IMPORTING keys FOR zr_zgrph_vacrequest~ValidateApprover.
+
     METHODS get_instance_authorizations_1 FOR INSTANCE AUTHORIZATION
       IMPORTING keys REQUEST requested_authorizations FOR zr_zgrph_vacrequest RESULT result.
+
+    METHODS ApproveRequest FOR MODIFY
+      IMPORTING keys FOR ACTION zr_zgrph_vacrequest~ApproveRequest RESULT result.
 
 *    METHODS detemineavailabledays FOR DETERMINE ON MODIFY
 *      IMPORTING keys FOR zr_zgrph_employee~detemineavailabledays.
@@ -97,6 +101,42 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
 
 
   METHOD get_instance_authorizations_1.
+  ENDMETHOD.
+
+  METHOD ApproveRequest.
+    DATA message TYPE REF TO zcm_zgrph_employee.
+
+    READ ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+    FIELDS ( RequestStatus RequestComment )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(vacreqs).
+
+    LOOP AT vacreqs REFERENCE INTO DATA(vacreq).
+
+      IF vacreq->RequestStatus = 'G'.
+        message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>request_already_approved
+                                          severity = if_abap_behv_message=>severity-error
+                                          comment = vacreq->RequestComment
+                                          ).
+        APPEND VALUE #( %tky = vacreq->%tky %msg     = message ) TO reported-zr_zgrph_vacrequest.
+        APPEND VALUE #( %tky = vacreq->%tky ) TO failed-zr_zgrph_vacrequest.
+        DELETE vacreqs INDEX sy-tabix.
+        CONTINUE.
+      ENDIF.
+
+      vacreq->RequestStatus = 'G'.
+      message = NEW zcm_zgrph_employee( severity     = if_abap_behv_message=>severity-success
+                                        textid       = zcm_zgrph_employee=>request_approved_successfully
+                                        comment = vacreq->RequestComment
+                                        ).
+
+      APPEND VALUE #( %tky = vacreq->%tky %msg = message ) TO reported-zr_zgrph_vacrequest.
+    ENDLOOP.
+
+    MODIFY ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+           UPDATE FIELDS ( RequestStatus )
+           WITH VALUE #( FOR t IN vacreqs ( %tky = t-%tky RequestStatus = t-RequestStatus ) ).
+
   ENDMETHOD.
 
 ENDCLASS.

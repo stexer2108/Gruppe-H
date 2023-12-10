@@ -90,6 +90,16 @@ CLASS zcm_zgrph_employee DEFINITION PUBLIC
         attr4 TYPE scx_attrname VALUE '',
       END OF days_not_enought .
 
+   CONSTANTS:
+      BEGIN OF request_already_approved,
+        msgid TYPE symsgid VALUE 'Z_ZGRPH_EMPLOYEE',
+        msgno TYPE symsgno VALUE '009',
+        attr1 TYPE scx_attrname VALUE 'COMMENT',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF request_already_approved .
+
    METHODS constructor
       IMPORTING
         severity  TYPE if_abap_behv_message=>t_severity

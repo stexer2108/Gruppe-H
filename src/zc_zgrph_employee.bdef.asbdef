@@ -31,6 +31,9 @@ define behavior for zc_zgrph_vacrequest //alias <alias_name>
   use update;
   use delete;
 
+  use action ApproverValidation;
+  use action DatesValidation;
+
   use association _Employee { with draft; }
   use association _Approver { with draft; }
 }
