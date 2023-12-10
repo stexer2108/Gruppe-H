@@ -77,12 +77,15 @@ authorization dependent by _Employee
   association _Approver { with draft; }
 
   action ApproveRequest result [1] $self;
+  action RejectRequest result [1] $self;
 
   determine action DatesValidation { validation ValidateDates; }
   determine action ApproverValidation { validation ValidateApprover; }
 
   validation ValidateDates on save { create; }
   validation ValidateApprover on save { create; }
+
+  determination determineStatus on modify { create; }
 
   field ( readonly, numbering : managed ) RequestId;
   field ( readonly ) RequestApplicant, RequestStatus, RequestComment /*errechneteTage*/;

@@ -100,6 +100,16 @@ CLASS zcm_zgrph_employee DEFINITION PUBLIC
         attr4 TYPE scx_attrname VALUE '',
       END OF request_already_approved .
 
+   CONSTANTS:
+      BEGIN OF request_already_rejected,
+        msgid TYPE symsgid VALUE 'Z_ZGRPH_EMPLOYEE',
+        msgno TYPE symsgno VALUE '009',
+        attr1 TYPE scx_attrname VALUE 'COMMENT',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF request_already_rejected .
+
    METHODS constructor
       IMPORTING
         severity  TYPE if_abap_behv_message=>t_severity
@@ -113,7 +123,7 @@ ENDCLASS.
 
 
 CLASS zcm_zgrph_employee IMPLEMENTATION.
-  METHOD constructor ##ADT_SUPPRESS_GENERATION.
+   METHOD constructor ##ADT_SUPPRESS_GENERATION.
     super->constructor( previous = previous ).
 
     CLEAR me->textid.
@@ -125,6 +135,5 @@ CLASS zcm_zgrph_employee IMPLEMENTATION.
 
     if_abap_behv_message~m_severity = severity.
     me->comment = comment.
-
-  ENDMETHOD.
+    ENDMETHOD.
 ENDCLASS.

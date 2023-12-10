@@ -16,8 +16,8 @@ annotate view zc_zgrph_vacrequest_approver with
   /* Actions */
   @UI.lineItem:
   [
-  { position: 10, dataAction: 'ApproveRequest', label: 'Approve Request', type: #FOR_ACTION }
-//  { position: 20, dataAction: 'CancelTravel', label: 'Cancel Travel', type: #FOR_ACTION }
+  { position: 10, dataAction: 'ApproveRequest', label: 'Approve Request', type: #FOR_ACTION },
+  { position: 20, dataAction: 'RejectRequest', label: 'Reject Request', type: #FOR_ACTION }
   ]
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]

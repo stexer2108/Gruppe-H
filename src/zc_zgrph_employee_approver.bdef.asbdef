@@ -28,6 +28,7 @@ define behavior for zc_zgrph_vacrequest_approver //alias <alias_name>
   use association _Approver { with draft; }
 
   use action ApproveRequest;
+  use action RejectRequest;
 
   field ( readonly ) ApplicantName, ApproverName;
 }

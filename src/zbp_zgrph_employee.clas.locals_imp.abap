@@ -16,6 +16,12 @@ CLASS lhc_zr_zgrph_employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS ApproveRequest FOR MODIFY
       IMPORTING keys FOR ACTION zr_zgrph_vacrequest~ApproveRequest RESULT result.
 
+    METHODS RejectRequest FOR MODIFY
+      IMPORTING keys FOR ACTION zr_zgrph_vacrequest~RejectRequest RESULT result.
+
+    METHODS determineStatus FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR zr_zgrph_vacrequest~determineStatus.
+
 *    METHODS detemineavailabledays FOR DETERMINE ON MODIFY
 *      IMPORTING keys FOR zr_zgrph_employee~detemineavailabledays.
 
@@ -25,16 +31,6 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
 
   METHOD get_instance_authorizations.
   ENDMETHOD.
-
-*  METHOD showTestMessage.
-*    DATA message TYPE REF TO zcm_zgrph_employee.
-*
-*    message = NEW zcm_zgrph_employee( severity = if_abap_behv_message=>severity-success
-*                                      textid = zcm_zgrph_employee=>test_message
-*                                      surename = sy-repid ).
-*
-*    APPEND message TO reported-%other.
-*  ENDMETHOD.
 
 *  METHOD detemineAvailableDays.
 *    " Read Employee
@@ -74,7 +70,7 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
             WHERE employee_id = @employee-RequestApprover INTO @DATA(exists).
 
       IF exists = abap_false.
-        message = NEW zcm_zgrph_employee( textid      = zcm_zgrph_employee=>approver_must_exist
+        message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>approver_must_exist
                                           severity = if_abap_behv_message=>severity-error ).
       ENDIF.
     ENDLOOP.
@@ -92,13 +88,11 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
       IF request->EndDate < request->StartDate.
         message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>endDate_after_startDate
                                           severity = if_abap_behv_message=>severity-error ).
-        APPEND VALUE #( %tky = request->%tky
-                        %msg = message ) TO reported-zr_zgrph_vacrequest.
+        APPEND VALUE #( %tky = request->%tky %msg = message ) TO reported-zr_zgrph_vacrequest.
         APPEND VALUE #( %tky = request->%tky ) TO failed-zr_zgrph_vacrequest.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
-
 
   METHOD get_instance_authorizations_1.
   ENDMETHOD.
@@ -137,6 +131,57 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
            UPDATE FIELDS ( RequestStatus )
            WITH VALUE #( FOR t IN vacreqs ( %tky = t-%tky RequestStatus = t-RequestStatus ) ).
 
+    result = VALUE #( FOR t IN vacreqs ( %tky = t-%tky %param = t ) ).
+  ENDMETHOD.
+
+  METHOD RejectRequest.
+  DATA message TYPE REF TO zcm_zgrph_employee.
+
+    READ ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+    FIELDS ( RequestStatus RequestComment )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(vacreqs).
+
+    LOOP AT vacreqs REFERENCE INTO DATA(vacreq).
+
+      IF vacreq->RequestStatus = 'A'.
+        message = NEW zcm_zgrph_employee( textid = zcm_zgrph_employee=>request_already_rejected
+                                          severity = if_abap_behv_message=>severity-error
+                                          comment = vacreq->RequestComment
+                                          ).
+        APPEND VALUE #( %tky = vacreq->%tky %msg     = message ) TO reported-zr_zgrph_vacrequest.
+        APPEND VALUE #( %tky = vacreq->%tky ) TO failed-zr_zgrph_vacrequest.
+        DELETE vacreqs INDEX sy-tabix.
+        CONTINUE.
+      ENDIF.
+
+      vacreq->RequestStatus = 'A'.
+      message = NEW zcm_zgrph_employee( severity     = if_abap_behv_message=>severity-success
+                                        textid       = zcm_zgrph_employee=>request_rejected
+                                        comment = vacreq->RequestComment
+                                        ).
+
+      APPEND VALUE #( %tky = vacreq->%tky
+                      %element = VALUE #( RequestStatus = if_abap_behv=>mk-on )
+                      %msg = message ) TO reported-zr_zgrph_vacrequest.
+    ENDLOOP.
+
+    MODIFY ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+           UPDATE FIELDS ( RequestStatus )
+           WITH VALUE #( FOR t IN vacreqs ( %tky = t-%tky RequestStatus = t-RequestStatus ) ).
+
+    result = VALUE #( FOR t IN vacreqs ( %tky = t-%tky ) ).
+  ENDMETHOD.
+
+  METHOD determineStatus.
+    READ ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+    FIELDS ( RequestStatus )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(vacreqs).
+
+    MODIFY ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+    UPDATE FIELDS ( RequestStatus )
+    WITH VALUE #( FOR t IN vacreqs ( %tky = t-%tky RequestStatus  = 'B' ) ).
   ENDMETHOD.
 
 ENDCLASS.
