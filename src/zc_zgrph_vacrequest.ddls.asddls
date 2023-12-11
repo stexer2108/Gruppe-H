@@ -15,7 +15,6 @@ define view entity zc_zgrph_vacrequest
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.7
       RequestComment,
-      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ZGRPH_StatusVH', element: 'RequestStatus' } }]
       RequestStatus,
       VacationDays,
       CreatedBy,

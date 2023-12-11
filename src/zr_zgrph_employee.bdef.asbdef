@@ -26,6 +26,7 @@ authorization master ( instance )
   draft action Resume;
 
   field ( readonly, numbering : managed ) EmployeeId;
+  field ( readonly ) AvailableVacationDays, ConsumedVacationDays, PlannedVacationDays;
 
   mapping for zgrph_employee corresponding
     {
@@ -88,7 +89,7 @@ authorization dependent by _Employee
   determination determineStatus on modify { create; }
 
   field ( readonly, numbering : managed ) RequestId;
-  field ( readonly ) RequestApplicant, RequestStatus, RequestComment /*errechneteTage*/;
+  field ( readonly ) RequestApplicant, RequestStatus;
   field ( mandatory : create ) RequestApprover, StartDate, EndDate;
   field ( readonly : update ) RequestApprover, StartDate, EndDate;
 

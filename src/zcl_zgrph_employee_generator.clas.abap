@@ -113,6 +113,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20220710'.
     vacrequest-request_comment = 'Sommerurlaub'.
     vacrequest-request_status = 'G'.
+    vacrequest-vacation_days = '6'.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
@@ -123,6 +124,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20221230'.
     vacrequest-request_comment = 'Weihnachtsurlaub'.
     vacrequest-request_status = 'A'.
+    vacrequest-vacation_days = '4'.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
@@ -133,6 +135,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20221230'.
     vacrequest-request_comment = 'Weihnachtsurlaub (2. Versuch)'.
     vacrequest-request_status = 'G'.
+    vacrequest-vacation_days = '3'.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
@@ -143,6 +146,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20230614'.
     vacrequest-request_comment = ' '.
     vacrequest-request_status = 'G'.
+    vacrequest-vacation_days = '13'.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
@@ -153,6 +157,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20231231'.
     vacrequest-request_comment = 'Winterurlaub'.
     vacrequest-request_status = 'B'.
+    vacrequest-vacation_days = '8'.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
@@ -163,6 +168,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-end_date = '20231231'.
     vacrequest-request_comment = 'Weihnachtsurlaub'.
     vacrequest-request_status = 'B'.
+    vacrequest-vacation_days = '3'.
     APPEND vacrequest TO vacrequests.
 
 
