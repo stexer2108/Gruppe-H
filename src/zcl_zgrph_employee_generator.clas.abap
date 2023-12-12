@@ -35,6 +35,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
 
 
     " Mitarbeiter erstellen
+    employee-client = sy-mandt.
     Hans_UUID = cl_system_uuid=>create_uuid_x16_static( ).
     employee-employee_id = Hans_UUID.
     employee-employee_number = '000001'.
@@ -48,21 +49,33 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND employee TO employees.
 
     " Urlaubsanspruch erstellen
+    vacent-client = sy-mandt.
     vacent-entitlement_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacent-employee_id = Hans_UUID.
-    vacent-entitlement_year = '2022'.
-    vacent-vacationdays = '30'.
+    vacent-entitlement_year = 2022.
+    vacent-vacationdays = 30.
+    vacent-created_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-created_at.
+    vacent-last_changed_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-last_changed_at.
     APPEND vacent TO vacents.
 
     " Urlaubsanspruch erstellen
+    vacent-client = sy-mandt.
     vacent-entitlement_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacent-employee_id = Hans_UUID.
-    vacent-entitlement_year = '2023'.
-    vacent-vacationdays = '30'.
+    vacent-entitlement_year = 2023.
+    vacent-vacationdays = 30.
+    vacent-created_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-created_at.
+    vacent-last_changed_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-last_changed_at.
     APPEND vacent TO vacents.
 
 
+
     " Mitarbeiter erstellen
+    employee-client = sy-mandt.
     Lisa_UUID = cl_system_uuid=>create_uuid_x16_static( ).
     employee-employee_id = Lisa_UUID.
     employee-employee_number = '000002'.
@@ -76,14 +89,21 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND employee TO employees.
 
     " Urlaubsanspruch erstellen
+    vacent-client = sy-mandt.
     vacent-entitlement_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacent-employee_id = Lisa_UUID.
-    vacent-entitlement_year = '2023'.
-    vacent-vacationdays = '30'.
+    vacent-entitlement_year = 2023.
+    vacent-vacationdays = 30.
+    vacent-created_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-created_at.
+    vacent-last_changed_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-last_changed_at.
     APPEND vacent TO vacents.
 
 
+
     " Mitarbeiter erstellen
+    employee-client = sy-mandt.
     Petra_UUID = cl_system_uuid=>create_uuid_x16_static( ).
     employee-employee_id = Petra_UUID.
     employee-employee_number = '000003'.
@@ -97,15 +117,21 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND employee TO employees.
 
     " Urlaubsanspruch erstellen
+    vacent-client = sy-mandt.
     vacent-entitlement_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacent-employee_id = Petra_UUID.
-    vacent-entitlement_year = '2023'.
-    vacent-vacationdays = '7'.
+    vacent-entitlement_year = 2023.
+    vacent-vacationdays = 7.
+    vacent-created_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-created_at.
+    vacent-last_changed_by = 'GENERATOR'.
+    GET TIME STAMP FIELD vacent-last_changed_at.
     APPEND vacent TO vacents.
 
 
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Hans_UUID.
     vacrequest-request_approver = Lisa_UUID.
@@ -117,6 +143,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Hans_UUID.
     vacrequest-request_approver = Lisa_UUID.
@@ -128,6 +155,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Hans_UUID.
     vacrequest-request_approver = Lisa_UUID.
@@ -139,6 +167,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Hans_UUID.
     vacrequest-request_approver = Lisa_UUID.
@@ -150,6 +179,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Hans_UUID.
     vacrequest-request_approver = Lisa_UUID.
@@ -161,6 +191,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     APPEND vacrequest TO vacrequests.
 
     " Urlaubsantrag erstellen
+    vacrequest-client = sy-mandt.
     vacrequest-request_id = cl_system_uuid=>create_uuid_x16_static( ).
     vacrequest-request_applicant = Petra_UUID.
     vacrequest-request_approver = Hans_UUID.
@@ -170,6 +201,7 @@ CLASS zcl_zgrph_employee_generator IMPLEMENTATION.
     vacrequest-request_status = 'B'.
     vacrequest-vacation_days = '3'.
     APPEND vacrequest TO vacrequests.
+
 
 
     " Einträge hinzufügen

@@ -19,6 +19,11 @@ annotate view zc_zgrph_vacrequest_approver with
   { position: 10, dataAction: 'ApproveRequest', label: 'Approve Request', type: #FOR_ACTION },
   { position: 20, dataAction: 'RejectRequest', label: 'Reject Request', type: #FOR_ACTION }
   ]
+  
+  @UI.identification: [
+    { position: 10, type: #FOR_ACTION, dataAction: 'ApproveRequest', label: 'Approve Request' },
+    { position: 20, type: #FOR_ACTION, dataAction: 'RejectRequest', label: 'Reject Request' }
+  ]
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   RequestId;
@@ -44,8 +49,8 @@ annotate view zc_zgrph_vacrequest_approver with
   @UI.lineItem: [{ position: 50 }]
   RequestComment;
 
-  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON }]
   @UI.selectionField: [{ position: 20 }]
   RequestStatus;
 

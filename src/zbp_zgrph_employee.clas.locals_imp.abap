@@ -22,8 +22,8 @@ CLASS lhc_zr_zgrph_employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS determineStatus FOR DETERMINE ON MODIFY
       IMPORTING keys FOR zr_zgrph_vacrequest~determineStatus.
 
-*    METHODS detemineavailabledays FOR DETERMINE ON MODIFY
-*      IMPORTING keys FOR zr_zgrph_employee~detemineavailabledays.
+    METHODS detemineavailabledays FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR zr_zgrph_vacrequest~detemineavailabledays.
 
 ENDCLASS.
 
@@ -32,30 +32,28 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
   METHOD get_instance_authorizations.
   ENDMETHOD.
 
-*  METHOD detemineAvailableDays.
-*    " Read Employee
-*    READ ENTITY IN LOCAL MODE zr_zgrph_vacrequest
-*         FIELDS ( startDate endDate )
-*         WITH CORRESPONDING #( keys )
-*         RESULT DATA(availableDays).
-*
-*    LOOP AT availableDays REFERENCE INTO DATA(availableday).
-*
-*    DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
-*    DATA(working_days) = calendar->calc_workingdays_between_dates( iv_start = availableDays=>startDate iv_end = '20240107' ).
-*
-*    ENDLOOP.
-*
-*
-*
-*    " Modify Travels
-*    MODIFY ENTITY IN LOCAL MODE zr_zgrph_employee
-*           UPDATE FIELDS ( AvailableDays )
-*           WITH VALUE #( FOR i IN availableDays
-*                         ( %tky     = i-%tky
-*                           AvailableDays = i-AvailableDays ) ).
-*
-*  ENDMETHOD.
+  METHOD detemineAvailableDays.
+
+  TRY.
+    "DEFINE CALENDAR
+    DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
+
+    " Read Travels
+    READ ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+         FIELDS ( VacationDays )
+         WITH CORRESPONDING #( keys )
+         RESULT DATA(requests).
+
+    " Modify Travels
+    MODIFY ENTITY IN LOCAL MODE zr_zgrph_vacrequest
+           UPDATE FIELDS ( VacationDays )
+           WITH VALUE #( FOR t IN requests
+                         ( %tky   = t-%tky
+                           VacationDays = calendar->calc_workingdays_between_dates( iv_start = t-StartDate  iv_end = t-EndDate ) ) ).
+   CATCH cx_root INTO DATA(error).
+
+  ENDTRY.
+  ENDMETHOD.
 
   METHOD validateapprover.
     DATA message TYPE REF TO zcm_zgrph_employee.
@@ -119,8 +117,8 @@ CLASS lhc_zr_zgrph_employee IMPLEMENTATION.
       ENDIF.
 
       vacreq->RequestStatus = 'G'.
-      message = NEW zcm_zgrph_employee( severity     = if_abap_behv_message=>severity-success
-                                        textid       = zcm_zgrph_employee=>request_approved_successfully
+      message = NEW zcm_zgrph_employee( textid       = zcm_zgrph_employee=>request_approved_successfully
+                                        severity     = if_abap_behv_message=>severity-success
                                         comment = vacreq->RequestComment
                                         ).
 

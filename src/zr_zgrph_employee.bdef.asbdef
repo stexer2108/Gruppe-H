@@ -87,9 +87,10 @@ authorization dependent by _Employee
   validation ValidateApprover on save { create; }
 
   determination determineStatus on modify { create; }
+  determination detemineavailabledays on modify { create; }
 
   field ( readonly, numbering : managed ) RequestId;
-  field ( readonly ) RequestApplicant, RequestStatus;
+  field ( readonly ) RequestApplicant, RequestStatus, VacationDays;
   field ( mandatory : create ) RequestApprover, StartDate, EndDate;
   field ( readonly : update ) RequestApprover, StartDate, EndDate;
 

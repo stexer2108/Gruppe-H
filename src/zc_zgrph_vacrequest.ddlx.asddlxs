@@ -38,7 +38,7 @@ annotate view zc_zgrph_vacrequest with
     RequestComment;
     
     @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails', criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
-    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+    @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON }]
     @UI.selectionField: [{ position: 20 }]
     RequestStatus;
     

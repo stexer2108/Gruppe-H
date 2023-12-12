@@ -28,6 +28,8 @@ define view entity zc_zgrph_vacrequest_approver
       _Approver : redirected to zc_zgrph_employee,
 
       ApproverName,
-      ApplicantName
+      ApplicantName,
+      
+      StatusCriticality
       
 }

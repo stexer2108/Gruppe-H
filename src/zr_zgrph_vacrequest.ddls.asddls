@@ -7,22 +7,22 @@ define view entity zr_zgrph_vacrequest
   association [1..1] to zi_zgrph_ApproverText    as _ApproverText  on $projection.RequestApprover = _ApproverText.EmployeeId
   association [1..1] to zi_zgrph_ApplicantText   as _ApplicantText on $projection.RequestApplicant = _ApplicantText.EmployeeId
 {
-  key zgrph_vacrequest.request_id        as RequestId,
+  key request_id        as RequestId,
       @EndUserText: { label: 'RequestApplicant', quickInfo: 'Request Applicant' }
       @ObjectModel.text.element: ['ApplicantName']
-      zgrph_vacrequest.request_applicant as RequestApplicant,
+      request_applicant as RequestApplicant,
       @EndUserText: { label: 'RequestApprover', quickInfo: 'Request Approver' }
       @ObjectModel.text.element: ['ApproverName']
-      zgrph_vacrequest.request_approver  as RequestApprover,
-      zgrph_vacrequest.start_date        as StartDate,
-      zgrph_vacrequest.end_date          as EndDate,
-      zgrph_vacrequest.request_comment   as RequestComment,
-      zgrph_vacrequest.request_status    as RequestStatus,
-      zgrph_vacrequest.vacation_days     as VacationDays,
-      zgrph_vacrequest.created_by        as CreatedBy,
-      zgrph_vacrequest.created_at        as CreatedAt,
-      zgrph_vacrequest.last_changed_by   as LastChangedBy,
-      zgrph_vacrequest.last_changed_at   as LastChangedAt,
+      request_approver  as RequestApprover,
+      start_date        as StartDate,
+      end_date          as EndDate,
+      request_comment   as RequestComment,
+      request_status    as RequestStatus,
+      vacation_days     as VacationDays,
+      created_by        as CreatedBy,
+      created_at        as CreatedAt,
+      last_changed_by   as LastChangedBy,
+      last_changed_at   as LastChangedAt,
 
       _Employee,
       _Approver,
@@ -30,7 +30,7 @@ define view entity zr_zgrph_vacrequest
       _ApplicantText.Name                as ApplicantName,
 
       case request_status when 'G' then 3
-                          when 'B' then 0
+                          when 'B' then 2
                           when 'A' then 1
                           else 0
       end                                as StatusCriticality
